@@ -1,6 +1,6 @@
 header {
     padding: 20px;
-    background-color: #fa7e2b;
+    background-color: #f49c61;
 }
 
 h1, h3 {
@@ -19,7 +19,7 @@ a {
 }
 
 a:hover {
-    color: rgb(205, 173, 230);
+    color: rgb(203, 173, 230);
 }
 
 main {
@@ -48,11 +48,11 @@ main {
     border-radius: 10px;
     font-size: 18px;
     padding: 8px;
-    background-color: #f7ecff;
+    background-color: #f4b5f9;
 }
 
 .btn:hover {
-    background-color: #710e8a;
+    background-color: #f6c5a4;
     color: white;
 }
 
@@ -68,7 +68,7 @@ main {
     color: seashell;
     padding: 20px;
     border-top: 2px solid;
-    background-color:#ef74f8;
+    background-color:#e983f0;
 }
 
 .userInput {

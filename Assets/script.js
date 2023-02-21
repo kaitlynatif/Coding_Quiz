@@ -1,4 +1,4 @@
-//declare the variables needed to access all relevant elements from the html
+// Declare the variables needed to access all relevant elements from the html
 var timerDisplay = document.querySelector("#timer");
 var mainEl = document.querySelector("main");
 var quizBox = document.querySelector(".quizBox");
@@ -9,11 +9,11 @@ var result = document.querySelector("#result");
 var score = document.querySelector("#score");
 var gameOverScreen = document.querySelector(".gameOver");
 
-//set current index for questions to zero, set wins to zero
+// Set current index for questions to zero, set wins to zero
 var currentIndex = 0;
 var wins = 0;
 
-//Create button, add css styling via class, and append them
+// Create button, add css styling via class, and append them
 var option1 = document.createElement("button");
 var option2 = document.createElement("button");
 var option3 = document.createElement("button");
@@ -30,31 +30,30 @@ answerOptions.appendChild(option3);
 answerOptions.appendChild(option4);
 
 
-//onloading page, this function will be called
+// Upon loading the page, this function will be called
 function rulesFirst() {
-     //create p element to hold rules, append it to quizBox
+     // Create p element to hold rules, append it to quizBox
      var rulesFirst = document.createElement("p");
      rulesFirst.setAttribute("style", "margin-bottom: 10px");
      rulesFirst.setAttribute("id", "rulesFirst");
-     rulesFirst.textContent = "Try to answer the following Javascript related questions within the time limit. Keep in mind that incorrect answers will substract 5 seconds from the timer!";
+     rulesFirst.textContent = "Try to answer the following JavaScript related questions within the time limit. Keep in mind that incorrect answers will subtract 5 seconds from the timer!";
      quizBox.appendChild(rulesFirst);
-     //create start button, append it to quizBox and add click event
+     // Create start button, append it to quizBox and add click event
      var startButton = document.createElement("button");
      startButton.innerHTML = "Start Quiz";
      startButton.setAttribute("id", "startButton");
-     //add styling to button using existing class in CSS
+     // Add styling to button using existing class in CSS
      startButton.classList.add("btn");
      myButton.appendChild(startButton);
      startButton.addEventListener("click", startQuiz);
 
 }
 
-
-//Set countdown timer to 45 seconds, start countdown function
+// Set countdown timer to 45 seconds, start countdown function
 var timeLeft = 45;
 function updateTimer() {
      timerInterval = setInterval(function () {
-//when timer reaches zero, clear interval function and display game over
+// When timer reaches zero, clear interval function and display 'game over'
         if (timeLeft === 0) {
                clearInterval(timerInterval);
                gameOver();
@@ -65,7 +64,7 @@ function updateTimer() {
      }, 1000);
 }
 
-//function to clear display and display game over when timer runs out or questions are finished
+// Function to clear display and display 'game over' when timer runs out or when questions are finished
 function gameOver() {
    timerDisplay = '';
     var gameOver = document.createElement("p");
@@ -95,7 +94,7 @@ function gameOver() {
     submitButton.addEventListener("click", function (event){
          event.preventDefault();
          if (userInput.value.length === 0) {
-              alert("Please enter initials before submitting");
+              alert("Please enter initials before submitting.");
          } else {
 
          localStorage.setItem("name", userInput.value);
@@ -109,24 +108,24 @@ function gameOver() {
 }
 
 
-//function to start quiz
+// Function to start quiz
 function startQuiz() {
-     //start timer, remove the rules and start button created earlier
+     // Start timer, remove the rules and start button created earlier
    updateTimer();
    var rules = document.querySelector("#rulesFirst");
    rules.remove();
    var startButton = document.querySelector("#startButton");
    startButton.remove();
-   //call function that will call the questions
+   // Call function that will call the questions
    getQuestion();
 }
 
-//function to go through all the questions
+// Function to go through all the questions
 function getQuestion () {
       currentQuestion = theQuestions[currentIndex];
       quizBox.textContent = currentQuestion.question;
 
-      //make answer buttons visible, add text content and click event
+      // Make answer buttons visible, add text content and click event
      answerOptions.classList.remove("visibility");
 
      option1.textContent = currentQuestion.choice1;
@@ -141,9 +140,9 @@ function getQuestion () {
         }
 
 
-//function to be called when answer buttons are clicked
+// Function to be called when answer buttons are clicked
 function selectAnswer (event) {
-     //set variable for the current target of the click event
+     // Set variable for the current target of the click event
    var clicked = event.currentTarget.textContent;
 
    if (clicked === currentQuestion.answer) {
@@ -155,7 +154,7 @@ function selectAnswer (event) {
         result.textContent = "Wrong answer!";
         timeLeft -= 5;
    }
-   //if statement to stop looping through questions and end game if all questions have been looped through
+   // If statement to stop looping through questions and end game if all questions have been looped through
    if (currentIndex === theQuestions.length - 1) {
       //gameOver();
       timeLeft = 0
@@ -167,7 +166,7 @@ function selectAnswer (event) {
 
 }
 
-//Created variable which is array of all questions and answers
+// Created variable which is an array of all questions and answers
      var theQuestions = [
      {question: "Which of the following will write the message ‘Hello world!’ in an alert box?",
       choice1: "alertbox(Hello world!);",
@@ -190,7 +189,7 @@ function selectAnswer (event) {
      choice4: "Changes a given array into a string",
      answer: "Changes a given variable into an integer value"
      },           
-     {question: "How do you write a ‘logical or’ in Javascript code?",
+     {question: "How do you write a ‘logical or’ operator in Javascript?",
      choice1: "//",
      choice2: "$$",
      choice3: "%",
@@ -205,7 +204,5 @@ function selectAnswer (event) {
      answer: "charAt()"
      }             
      ];
-
-
 
 rulesFirst ();
