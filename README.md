@@ -1,5 +1,7 @@
 # Module 04 Web APIs: Code Quiz
 
+A timed quiz on JavaScript fundamentals that stores high scores.
+
 ## User Story
 
 ```

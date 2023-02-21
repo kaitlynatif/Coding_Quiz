@@ -1,8 +1,8 @@
-//declare all the variables needed to access all relevant HTML elements
+// Declare all the variables needed to access all relevant HTML elements
 var theDisplay = document.querySelector("#scoreDisplay");
 var buttons = document.querySelector(".theButtons");
 
-//function to retrieve high score date from local storage, adding buttons and click events
+// Function to retrieve high score data from local storage, adding buttons and click events
 function renderHighScore () {
 
    var lastHS = localStorage.getItem("score");
